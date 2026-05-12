@@ -294,7 +294,8 @@ var dot = document.getElementById('wsDot');
 var status = document.getElementById('statusText');
 dot.className = 'ws-dot loading';
 
-var ws = new WebSocket('ws://' + window.location.host + '/ws');
+var wsProto = (location.protocol === 'https:') ? 'wss:' : 'ws:';
+var ws = new WebSocket(wsProto + '//' + location.host + '/ws');
 var loaded = 0;
 
 ws.onopen = function() {
